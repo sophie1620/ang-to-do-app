@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.list {
+    position: relative;
+    width: 500px;
+}
+
+.list h2 {
+    background-color: antiquewhite;
+    padding: 10px 20px;
+    font-weight: 600;
+}
+
+.todo {
+    display: flex;
+}
+
+.todo.done {
+    text-decoration: line-through;
+}
+
+.done button.delete {
+    display: none;
+}
