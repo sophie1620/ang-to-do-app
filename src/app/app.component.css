@@ -1,0 +1,9 @@
+div.app {
+    /* border: 1px solid red; */
+    margin: 0 auto;
+}
+
+.app h1 {
+    text-align: center;
+    color: darkblue;
+}
