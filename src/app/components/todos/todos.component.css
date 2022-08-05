@@ -15,16 +15,39 @@ form {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    padding: 20px;
+}
+
+.todoList {
+    width: 100%;
+    padding: 10px 20px;
 }
 
 .todo {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: aliceblue;
+    padding: 10px;
+    /* border: 1px solid blue; */
+}
+
+.todo.grid-container {
+    display: grid;
+    grid-template-columns: 10% 60% 20%;
+    column-gap: 5px;
+    justify-items: stretch;
+}
+
+.todo .id {
+    text-align: center;
+    /* border: 1px solid red; */
 }
 
 .done .content {
     text-decoration: line-through;
 }
-
-/* .done button.delete {
-    display: none;
-} */
+.todo .content {
+    /* border: 1px solid red; */
+    padding: 0 8px;
+}

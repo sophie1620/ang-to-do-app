@@ -11,9 +11,9 @@
         <input type="submit" value="add task" class="todo-submit">
     </form>
 
-    <ul>
+    <ul class="todoList">
         <!-- a for loop created to display each of the entered items -->
-        <li class="todo {{ todo.completed? 'done' : ''}}" *ngFor="let todo of todos, let i = index">
+        <li class="todo {{ todo.completed? 'done' : ''}} grid-container" *ngFor="let todo of todos, let i = index">
             <div class="id">{{ i + 1 }}</div>
             <div class="content" (click)="toggleDone(i)">{{todo.content}}</div>
             <button class="delete" (click)="deleteRemove(i)">Remove</button>
