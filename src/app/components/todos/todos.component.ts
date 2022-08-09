@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Todo } from 'src/app/_models/Todo';
 
 @Component({
@@ -7,7 +7,8 @@ import { Todo } from 'src/app/_models/Todo';
   styleUrls: ['./todos.component.css']
 })
 
-export class TodosComponent implements OnInit {
+export class TodosComponent implements OnInit, OnDestroy {
+  // OnInit is for the interface
 
   todos: Todo[];
   inputToDoTask: string = "";
@@ -21,25 +22,43 @@ export class TodosComponent implements OnInit {
     this.todos = [];
   }
 
+  ngOnDestroy(): void {
+    
+  }
+
+  // Methods below ~ need to add the corresponding implements on line 10 for it to work
+    // ngAfterViewInit - after the component HTML is all ready, where the HTML is prepared to be drawn
+    // ngOnChanges - doesn't have input, but whenever the value of inp  ut gets changed
+    // ngOnDestroy - when component is destroyed/removed
+
+
 
   // on click, this function gets called 
   toggleDone(task: number) {
-    this.todos.map((todo, i) => {
-      // if statement to check which task the user wants to cross off the list, if the task item matches the index number, then we will change the boolean of that specific task's completed status
-      if(i === task) {
-        todo.completed = !todo.completed;
-      }
-      return todo;
-    })
+
+    this.todos[task].completed = !this.todos[task].completed;
+
+    // // for this, a forEach loop would suffice
+    // this.todos = this.todos.map((todo, i) => {
+    //   // if statement to check which task the user wants to cross off the list, if the task item matches the index number, then we will change the boolean of that specific task's completed status
+    //   if(i === task) {
+    //     todo.completed = !todo.completed;
+    //   }
+    //   return todo;
+    // })
   }
   
   
   deleteRemove(task: number){
-    // using the filter method to return only the items in the array that have indexes that DO NOT match the index that the user has selected
-    this.todos = this.todos.filter((todo, i) => {
-      // if the task's index DO NOT match the index in the array, then return it, else remove/withold it
-      i !== task
-    })
+
+    // can use .splice() to get a new array
+    this.todos.splice(task, 1);
+
+    // // using the filter method to return only the items in the array that have indexes that DO NOT match the index that the user has selected
+    // this.todos = this.todos.filter((todo, i) => {
+    //   // if the task's index DO NOT match the index in the array, then return it, else remove/withold it
+    //   i !== task
+    // })
   }
 
   // on the form submit, this function will be called
